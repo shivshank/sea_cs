@@ -1,0 +1,51 @@
+<script src="sea_cs.js"></script>
+
+<p>still valid HTML... deal with it :dabs:</p>
+
+<p>In 5 seconds a tick will happen</p>
+
+<script>
+
+let ecs = new SeaCs()
+
+ecs.add_entity({
+    "Pos": { x: 15, y: 15 },
+    "Vel": { x: 0, y: 5 },
+    "Health": 10,
+})
+
+ecs.add_entity({
+    "Pos": { x: 0, y: 0 },
+    "Vel": { x: 5, y: 0 },
+})
+
+ecs.add_entity({
+    "Pos": { x: 15, y: 15 },
+    "Text": "Hey guys!",
+    "Health": 15,
+})
+
+console.log("Before steps")
+ecs.print_all()
+
+setTimeout(() => {
+    ecs.join(
+        ["Pos", "Vel"],
+        (e) => {
+            e.Pos.x += e.Vel.x
+            e.Pos.y += e.Vel.y
+        }
+    )
+
+    ecs.join(
+        ["Health"],
+        (e) => {
+            e.Health -= 2
+        }
+    )
+
+    console.log("After steps")
+    ecs.print_all()
+}, 5000)
+
+</script>
