@@ -45,5 +45,6 @@ ecs.join(
 Doesnt:
 - Support delete (easy enough to add)
 - Support random access (although you can just store your own refs to entities)
-- Do anything fancy that will actually help your performance in any way
+- Do anything fancy that will actually help your performance in any way (not that it
+  should be the worst performing thing ever, though)
 
